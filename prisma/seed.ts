@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { products } from '../products';
+import { order, products, user } from '../seeds';
 
 const prisma = new PrismaClient();
 
@@ -11,6 +11,18 @@ async function main() {
       create: product,
     });
   }
+
+  await prisma.user.upsert({
+    where: { email: user.email },
+    update: {},
+    create: user,
+  });
+
+  await prisma.order.upsert({
+    where: { id: 'id' },
+    update: {},
+    create: order,
+  });
 }
 main()
   .then(async () => {

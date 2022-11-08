@@ -105,3 +105,17 @@ export const products = [
     published: false,
   },
 ];
+
+export const user = {
+  name: 'Admin',
+  email: 'email@admin.com',
+  password: 'admin',
+};
+
+export const order = {
+  product: 'Rock',
+  description: 'THE ONE.',
+  price: 555549.99,
+  provider: 'All Store',
+  available: true,
+};
