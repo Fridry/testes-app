@@ -36,6 +36,7 @@ export class ProductsController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   @ApiOkResponse({ type: [ProductEntity] })
   async findAll() {
     const products = await this.productsService.findAll();
@@ -52,6 +53,7 @@ export class ProductsController {
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   @ApiOkResponse({ type: ProductEntity })
   async findOne(@Param('id') id: string) {
     return new ProductEntity(await this.productsService.findOne(id));
